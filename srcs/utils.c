@@ -6,7 +6,7 @@
 /*   By: vkettune <vkettune@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 09:58:56 by vkettune          #+#    #+#             */
-/*   Updated: 2024/07/25 11:32:58 by vkettune         ###   ########.fr       */
+/*   Updated: 2024/07/25 13:21:10 by vkettune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	ft_usleep(t_data *data, size_t time_ms)
 	start = get_current_time();
 	while ((get_current_time() - start) < time_ms)
 	{
-		if (check_if_philos_exist(&data->philo->data))
+		if (check_if_philos_exist(data))
 			return ;
 		usleep(500);
 	}

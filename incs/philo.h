@@ -6,7 +6,7 @@
 /*   By: vkettune <vkettune@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 12:05:18 by vkettune          #+#    #+#             */
-/*   Updated: 2024/07/25 12:08:05 by vkettune         ###   ########.fr       */
+/*   Updated: 2024/07/25 13:18:58 by vkettune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ typedef struct s_philo
 	pthread_mutex_t		*right_fork;
 	int					meals_eaten;
 	size_t				last_meal_time;
-	t_data				data;
+	t_data				*data;
 }	t_philo;
 
 int			destroy_all_mutexes(t_data *data, int i, int check);

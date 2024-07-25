@@ -6,7 +6,7 @@
 /*   By: vkettune <vkettune@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 08:40:20 by vkettune          #+#    #+#             */
-/*   Updated: 2024/07/25 11:29:28 by vkettune         ###   ########.fr       */
+/*   Updated: 2024/07/25 13:19:22 by vkettune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int	philo_init(t_data *data, t_philo *philo)
 		philo[i].id = i + 1;
 		philo[i].last_meal_time = data->start_time;
 		philo[i].meals_eaten = 0;
-		philo[i].data = *data;
+		philo[i].data = data;
 		philo[i].right_fork = &data->fork_lock[i];
 		philo[i].left_fork = &data->fork_lock[(i + 1) % data->philo_count];
 		i++;

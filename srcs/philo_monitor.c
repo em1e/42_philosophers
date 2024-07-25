@@ -6,7 +6,7 @@
 /*   By: vkettune <vkettune@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 14:52:06 by vkettune          #+#    #+#             */
-/*   Updated: 2024/07/25 12:07:25 by vkettune         ###   ########.fr       */
+/*   Updated: 2024/07/25 13:19:46 by vkettune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	are_philos_full(t_data *data)
 		while (i < data->philo_count)
 		{
 			pthread_mutex_lock(&data->philo_mutex);
-			(data->philo + i++)->data.end = 1;
+			(data->philo + i++)->data->end = 1;
 			pthread_mutex_unlock(&data->philo_mutex);
 		}
 		return (1);
@@ -81,7 +81,7 @@ int	if_is_dead(t_data *data, t_philo *philo)
 			while (i < data->philo_count)
 			{
 				pthread_mutex_lock(&data->philo_mutex); // new
-				(philo + i++)->data.end = 1;
+				(philo + i++)->data->end = 1;
 				pthread_mutex_unlock(&data->philo_mutex); // new
 			}
 			return (1);

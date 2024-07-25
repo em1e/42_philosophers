@@ -6,7 +6,7 @@
 /*   By: vkettune <vkettune@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 07:28:28 by vkettune          #+#    #+#             */
-/*   Updated: 2024/07/25 12:11:42 by vkettune         ###   ########.fr       */
+/*   Updated: 2024/07/25 13:32:18 by vkettune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,19 @@ void	*philo_routine(void *arg)
 	
 	if (philo->id % 2 == 0)
 	{
-		philo_actions(&philo->data, philo, THINK);
-		ft_usleep(&philo->data, philo->data.meal_time / 2); // does nothing
+		philo_actions(philo->data, philo, THINK);
+		ft_usleep(philo->data, philo->data->meal_time / 2); // does nothing
 	}
-	while (!check_if_philos_exist(&philo->data))
+	while (!check_if_philos_exist(philo->data))
 	{
-		if (philo_eat(&philo->data, philo) == 1)
+		if (philo_eat(philo->data, philo) == 1)
 			break ;
-		philo_sleep(&philo->data, philo);
-		philo_actions(&philo->data, philo, THINK);
+		if (check_if_philos_exist(philo->data))
+			break;
+		philo_sleep(philo->data, philo);
+		if (check_if_philos_exist(philo->data))
+			break;
+		philo_actions(philo->data, philo, THINK);
 	}
 	return (NULL);
 }
@@ -37,7 +41,7 @@ void	*philo_monitor(t_data *data, pthread_t	*threads)
 {
 	while (1)
 	{
-		usleep(200);
+		usleep(42);
 		eaten_enough(data, data->philo);
 		if (if_is_dead(data, data->philo)
 			|| are_philos_full(data))

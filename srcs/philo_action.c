@@ -6,7 +6,7 @@
 /*   By: vkettune <vkettune@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/18 05:49:07 by vkettune          #+#    #+#             */
-/*   Updated: 2024/07/25 12:27:06 by vkettune         ###   ########.fr       */
+/*   Updated: 2024/07/25 12:55:25 by vkettune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 void	philo_actions(t_data *data, t_philo *philo, t_status status)
 {
 	size_t	time;
-	(void)philo;
-	(void)status;
 	
 	time = get_current_time() - data->start_time;
 	pthread_mutex_lock(&data->philo_mutex);
@@ -33,14 +31,20 @@ void	philo_actions(t_data *data, t_philo *philo, t_status status)
 
 int	fork_distribution(t_data *data, t_philo *philo)
 {
-	pthread_mutex_lock(philo->right_fork);
+	if (philo->id % 2)
+		pthread_mutex_lock(philo->right_fork);
+	else
+		pthread_mutex_lock(philo->left_fork);
 	philo_actions(data, philo, FORK);
 	if (data->philo_count == 1)
 	{
 		pthread_mutex_unlock(philo->right_fork);
 		return (1);
 	}
-	pthread_mutex_lock(philo->left_fork);
+	if (philo->id % 2)
+		pthread_mutex_lock(philo->left_fork);
+	else
+		pthread_mutex_lock(philo->right_fork);
 	philo_actions(data, philo, FORK);
 	return (0);
 }
