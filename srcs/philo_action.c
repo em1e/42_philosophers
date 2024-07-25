@@ -6,7 +6,7 @@
 /*   By: vkettune <vkettune@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/18 05:49:07 by vkettune          #+#    #+#             */
-/*   Updated: 2024/07/25 12:55:25 by vkettune         ###   ########.fr       */
+/*   Updated: 2024/07/25 13:42:10 by vkettune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	philo_actions(t_data *data, t_philo *philo, t_status status)
 {
 	size_t	time;
-	
+
 	time = get_current_time() - data->start_time;
 	pthread_mutex_lock(&data->philo_mutex);
 	if (status == EAT)
@@ -46,6 +46,8 @@ int	fork_distribution(t_data *data, t_philo *philo)
 	else
 		pthread_mutex_lock(philo->right_fork);
 	philo_actions(data, philo, FORK);
+	if (check_if_philos_exist(data))
+		return (1);
 	return (0);
 }
 
@@ -66,8 +68,11 @@ int	philo_eat(t_data *data, t_philo *philo)
 	return (0);
 }
 
-void	philo_sleep(t_data *data, t_philo *philo)
+int	philo_sleep(t_data *data, t_philo *philo)
 {
+	if (check_if_philos_exist(data))
+		return (1);
 	philo_actions(data, philo, SLEEP);
 	ft_usleep(data, data->sleep_time);
+	return (0);
 }

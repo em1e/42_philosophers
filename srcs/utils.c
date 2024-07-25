@@ -6,7 +6,7 @@
 /*   By: vkettune <vkettune@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 09:58:56 by vkettune          #+#    #+#             */
-/*   Updated: 2024/07/25 13:21:10 by vkettune         ###   ########.fr       */
+/*   Updated: 2024/07/25 13:41:06 by vkettune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,11 +61,11 @@ int	ft_atoi(char *str)
 	return (sign * result);
 }
 
-int ft_isdigit(char *str)
+int	ft_isdigit(char *str)
 {
 	while (*str)
 	{
-		if (*str >= '0' && *str  <= '9')
+		if (*str >= '0' && *str <= '9')
 			str++;
 		else
 			return (1);

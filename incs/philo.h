@@ -6,7 +6,7 @@
 /*   By: vkettune <vkettune@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 12:05:18 by vkettune          #+#    #+#             */
-/*   Updated: 2024/07/25 13:18:58 by vkettune         ###   ########.fr       */
+/*   Updated: 2024/07/25 13:46:01 by vkettune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ typedef enum e_status
 	SLEEP,
 	THINK,
 	FORK
-} t_status;
+}	t_status;
 
 typedef struct s_data
 {
@@ -55,7 +55,7 @@ typedef struct s_philo
 	t_data				*data;
 }	t_philo;
 
-int			destroy_all_mutexes(t_data *data, int i, int check);
+int			destroy_all_mutexes(t_data *data);
 
 int			error(char *str);
 
@@ -69,10 +69,10 @@ int			main(int argc, char **argv);
 int			check_if_philos_exist(t_data *data);
 int			check_if_full(t_data *data);
 
-void	philo_actions(t_data *data, t_philo *philo, t_status status);
+void		philo_actions(t_data *data, t_philo *philo, t_status status);
 int			fork_distribution(t_data *data, t_philo *philo);
 int			philo_eat(t_data *data, t_philo *philo);
-void		philo_sleep(t_data *data, t_philo *philo);
+int			philo_sleep(t_data *data, t_philo *philo);
 
 size_t		get_current_time(void);
 void		ft_usleep(t_data *data, size_t time_ms);

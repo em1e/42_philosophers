@@ -6,7 +6,7 @@
 /*   By: vkettune <vkettune@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 08:40:20 by vkettune          #+#    #+#             */
-/*   Updated: 2024/07/25 13:19:22 by vkettune         ###   ########.fr       */
+/*   Updated: 2024/07/25 13:43:53 by vkettune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ int	set_data_mutex(t_data *data)
 	while (i < data->philo_count)
 	{
 		if (pthread_mutex_init(&data->fork_lock[i], NULL) != 0)
-			return (destroy_all_mutexes(data, 0, 1));
+			return (destroy_all_mutexes(data));
 		i++;
 	}
 	return (0);

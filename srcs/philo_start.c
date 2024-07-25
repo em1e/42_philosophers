@@ -6,7 +6,7 @@
 /*   By: vkettune <vkettune@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 07:28:28 by vkettune          #+#    #+#             */
-/*   Updated: 2024/07/25 13:32:18 by vkettune         ###   ########.fr       */
+/*   Updated: 2024/07/25 13:41:28 by vkettune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,21 +17,19 @@ void	*philo_routine(void *arg)
 	t_philo	*philo;
 
 	philo = (t_philo *)arg;
-	
 	if (philo->id % 2 == 0)
 	{
 		philo_actions(philo->data, philo, THINK);
-		ft_usleep(philo->data, philo->data->meal_time / 2); // does nothing
+		ft_usleep(philo->data, philo->data->meal_time / 2);
 	}
 	while (!check_if_philos_exist(philo->data))
 	{
 		if (philo_eat(philo->data, philo) == 1)
 			break ;
+		if (philo_sleep(philo->data, philo) == 1)
+			break ;
 		if (check_if_philos_exist(philo->data))
-			break;
-		philo_sleep(philo->data, philo);
-		if (check_if_philos_exist(philo->data))
-			break;
+			break ;
 		philo_actions(philo->data, philo, THINK);
 	}
 	return (NULL);
