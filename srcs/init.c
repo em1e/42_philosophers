@@ -6,7 +6,7 @@
 /*   By: vkettune <vkettune@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 08:40:20 by vkettune          #+#    #+#             */
-/*   Updated: 2024/07/25 13:43:53 by vkettune         ###   ########.fr       */
+/*   Updated: 2024/07/25 15:16:15 by vkettune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	check_max_int(char **input)
 	while (input[i])
 	{
 		check = ft_atoi(input[i]);
-		if (check < 0 || check > max)
+		if (check <= 0 || check > max)
 			return (1);
 		i++;
 	}
