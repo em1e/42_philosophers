@@ -6,7 +6,7 @@
 /*   By: mie <mie@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/18 05:49:07 by vkettune          #+#    #+#             */
-/*   Updated: 2024/07/26 11:22:17 by mie              ###   ########.fr       */
+/*   Updated: 2024/07/26 11:24:08 by mie              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,6 @@ int	fork_distribution(t_data *data, t_philo *philo)
 	else
 		pthread_mutex_lock(philo->right_fork);
 	philo_actions(data, philo, FORK);
-	// if (check_if_philos_exist(data))
-	// 	return (1);
 	return (0);
 }
 
