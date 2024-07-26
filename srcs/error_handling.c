@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error_handling.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vkettune <vkettune@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mie <mie@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 04:08:31 by vkettune          #+#    #+#             */
-/*   Updated: 2024/07/25 13:44:46 by vkettune         ###   ########.fr       */
+/*   Updated: 2024/07/26 11:19:23 by mie              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,8 @@ int	error(char *str)
 
 int	destroy_all_mutexes(t_data *data)
 {
-	t_philo	*philo;
 	int		i;
 
-	philo = data->philo;
 	i = 0;
 	while (i < data->philo_count)
 	{

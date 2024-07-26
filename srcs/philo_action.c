@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo_action.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vkettune <vkettune@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mie <mie@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/18 05:49:07 by vkettune          #+#    #+#             */
-/*   Updated: 2024/07/25 13:42:10 by vkettune         ###   ########.fr       */
+/*   Updated: 2024/07/26 11:22:17 by mie              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ int	fork_distribution(t_data *data, t_philo *philo)
 		pthread_mutex_lock(philo->right_fork);
 	else
 		pthread_mutex_lock(philo->left_fork);
+	if (check_if_philos_exist(data))
+		return (1);
 	philo_actions(data, philo, FORK);
 	if (data->philo_count == 1)
 	{
@@ -46,8 +48,8 @@ int	fork_distribution(t_data *data, t_philo *philo)
 	else
 		pthread_mutex_lock(philo->right_fork);
 	philo_actions(data, philo, FORK);
-	if (check_if_philos_exist(data))
-		return (1);
+	// if (check_if_philos_exist(data))
+	// 	return (1);
 	return (0);
 }
 
